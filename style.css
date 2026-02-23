@@ -1,0 +1,358 @@
+/*
+============================================
+TEMA SOMBRIO RPG - DOTA 2
+Com imagem de fundo personalizada
+============================================
+*/
+
+/* Importando fontes */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700;900&family=Cinzel:wght@400;700;900&display=swap');
+/* ==========================================
+   RESET E VARIÁVEIS
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-sangue: #8b0000;
+    --cor-sangue-claro: #a52a2a;
+    --cor-trevas: #0a0a0a;
+    --cor-trevas-claras: #1a1a1a;
+    --cor-metal: #2c2c2c;
+    --cor-ouro-escuro: #6b4f3c;
+    --cor-ouro: #b8860b;
+    --cor-texto: #d4d4d4;
+    --cor-texto-escuro: #8a8a8a;
+}
+
+/* ==========================================
+   IMAGEM DE FUNDO DA PÁGINA
+   ========================================== */
+body {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    color: var(--cor-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+    /* IMAGEM DE FUNDO */
+    background-image: url('imagens/fundo-sombrio.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--cor-trevas); /* fallback */
+    position: relative;
+}
+
+/* CAMADA ESCURA POR CIMA DA IMAGEM */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 0 = totalmente transparente, 1 = totalmente preto */
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ==========================================
+   CABEÇALHO
+   ========================================== */
+.cabecalho {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(10, 10, 10, 0.9));
+    text-align: center;
+    padding: 3rem 1rem;
+    border-bottom: 3px solid var(--cor-sangue);
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+}
+
+.cabecalho-titulo {
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: var(--cor-sangue);
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+    margin-bottom: 0.5rem;
+    letter-spacing: 4px;
+}
+
+.cabecalho-subtitulo {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    color: var(--cor-ouro-escuro);
+    font-weight: 300;
+}
+
+/* ==========================================
+   NAVEGAÇÃO
+   ========================================== */
+.navegacao {
+    background-color: rgba(26, 26, 26, 0.9);
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--cor-sangue);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+.navegacao-lista {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+
+.navegacao-link {
+    color: var(--cor-texto);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.navegacao-link:hover {
+    color: var(--cor-sangue);
+    border-color: var(--cor-sangue);
+    background-color: rgba(139, 0, 0, 0.1);
+    transform: translateY(-2px);
+    text-shadow: 0 0 5px rgba(139, 0, 0, 0.5);
+}
+
+/* ==========================================
+   CONTEÚDO PRINCIPAL
+   ========================================== */
+.conteudo-principal {
+    max-width: 1200px;
+    width: 90%;
+    margin: 2rem auto;
+    flex: 1;
+}
+
+/* ==========================================
+   SEÇÕES
+   ========================================== */
+.secao {
+    margin-bottom: 4rem;
+    background-color: rgba(10, 10, 10, 0.7);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 5px solid var(--cor-sangue);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.secao-titulo {
+    color: var(--cor-sangue);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--cor-sangue);
+    padding-bottom: 0.5rem;
+    text-shadow: 0 0 8px rgba(139, 0, 0, 0.5);
+}
+
+.secao-texto {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+   CARDS DOS HERÓIS
+   ========================================== */
+.herois-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: rgba(26, 26, 26, 0.9);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--cor-sangue);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(3px);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(139, 0, 0, 0.3);
+    border-color: var(--cor-sangue);
+}
+
+.card-imagem-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 2px solid var(--cor-sangue);
+}
+
+.card-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-imagem {
+    transform: scale(1.1);
+}
+
+.card-conteudo {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-titulo {
+    color: var(--cor-sangue);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.card-descricao {
+    font-size: 0.95rem;
+    color: var(--cor-texto-escuro);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.card-funcao {
+    color: var(--cor-ouro-escuro);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--cor-sangue);
+    padding-top: 0.75rem;
+    margin-top: auto;
+}
+
+.card-funcao-destaque {
+    color: var(--cor-sangue);
+    font-weight: 600;
+}
+
+/* ==========================================
+   RODAPÉ
+   ========================================== */
+.rodape {
+    background-color: rgba(26, 26, 26, 0.9);
+    text-align: center;
+    padding: 2rem 1rem;
+    border-top: 2px solid var(--cor-sangue);
+    margin-top: 2rem;
+    backdrop-filter: blur(5px);
+}
+
+.rodape-texto {
+    color: var(--cor-ouro-escuro);
+    font-size: 1rem;
+}
+
+.rodape-texto-pequeno {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+   ========================================== */
+@media (max-width: 768px) {
+    .cabecalho {
+        padding: 2rem 1rem;
+    }
+
+    .navegacao-lista {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navegacao-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .herois-container {
+        grid-template-columns: 1fr;
+    }
+
+    .secao {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cabecalho-titulo {
+        font-size: 2rem;
+    }
+
+    .cabecalho-subtitulo {
+        font-size: 1rem;
+    }
+
+    .secao-titulo {
+        font-size: 1.5rem;
+    }
+
+    .card-conteudo {
+        padding: 1rem;
+    }
+}
+/* ==========================================
+   CABEÇALHO - TÍTULO COM LARGURA CONTROLADA
+   ========================================== */
+.cabecalho {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(10, 10, 10, 0.9));
+    text-align: center;
+    padding: 2rem 1rem; /* Reduzi o padding */
+    border-bottom: 3px solid var(--cor-sangue);
+    backdrop-filter: blur(5px);
+    max-width: 800px; /* ← NOVO: Limita a largura máxima */
+    margin: 0 auto; /* ← NOVO: Centraliza na página */
+    border-radius: 0 0 20px 20px; /* ← NOVO: Bordas arredondadas só embaixo */
+}
+
+.cabecalho-titulo {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.5rem); /* Reduzi o tamanho máximo */
+    color: var(--cor-sangue);
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+    margin-bottom: 0.5rem;
+    letter-spacing: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    max-width: 600px; /* ← NOVO: Limita a largura do título */
+    margin-left: auto; /* ← NOVO: Centraliza */
+    margin-right: auto; /* ← NOVO: Centraliza */
+    line-height: 1.2; /* ← NOVO: Controla altura da linha */
+    word-break: keep-all; /* ← NOVO: Evita quebra de palavras */
+}
+
+.cabecalho-subtitulo {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-size: clamp(0.9rem, 3vw, 1.1rem); /* Reduzi um pouco */
+    color: var(--cor-ouro-escuro);
+    font-weight: 300;
+    max-width: 500px; /* ← NOVO: Limita largura do subtítulo */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
